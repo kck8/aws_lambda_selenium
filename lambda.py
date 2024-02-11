@@ -1,7 +1,7 @@
 from selenium import webdriver
 from tempfile import mkdtemp
 
-def get_driver(aws=True):
+def get_driver():
     service = webdriver.ChromeService("/opt/chromedriver")
     
     options = webdriver.ChromeOptions()
@@ -27,7 +27,7 @@ def get_driver(aws=True):
 def handler(event=None, context=None):
     print(f"Request ID: {context.aws_request_id}")
     print(f"Event: {event}")
-    driver = get_driver(aws=True)
+    driver = get_driver()
     
     driver.get("https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json")
 
